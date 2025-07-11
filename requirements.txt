@@ -1,10 +1,7 @@
 streamlit
-torch
-torchaudio
-transformers
-sounddevice
-soundfile
-scipy
-matplotlib
-numpy
 streamlit-webrtc
+transformers
+torchaudio
+torch
+numpy
+pandas
