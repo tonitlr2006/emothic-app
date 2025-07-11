@@ -1,0 +1,10 @@
+streamlit
+torch
+torchaudio
+transformers
+sounddevice
+soundfile
+scipy
+matplotlib
+numpy
+streamlit-webrtc
