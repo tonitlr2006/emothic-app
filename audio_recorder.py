@@ -6,7 +6,6 @@ import io
 import wave
 
 # Configuración del cliente
-client_settings = ClientSettings(
     media_stream_constraints={"audio": True, "video": False},
     rtc_configuration={"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]},
 )
