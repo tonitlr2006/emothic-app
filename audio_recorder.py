@@ -5,18 +5,12 @@ import numpy as np
 import io
 import wave
 
-# Configuración del cliente
-    media_stream_constraints={"audio": True, "video": False},
-    rtc_configuration={"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]},
-)
-
-# Clase para procesar audio en vivo
+# Procesador de audio personalizado
 class AudioProcessor:
     def __init__(self):
         self.frames = []
 
-    def recv(self, frame):
-        # Convertir a numpy
+    def recv(self, frame: av.AudioFrame) -> av.AudioFrame:
         pcm = frame.to_ndarray().flatten()
         self.frames.append(pcm)
         return frame
@@ -25,9 +19,9 @@ def record_audio():
     ctx = webrtc_streamer(
         key="audio",
         mode=WebRtcMode.SENDRECV,
-        client_settings=client_settings,
         audio_processor_factory=AudioProcessor,
         media_stream_constraints={"audio": True, "video": False},
+        rtc_configuration={"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
     )
 
     if ctx.audio_processor and len(ctx.audio_processor.frames) > 0:
